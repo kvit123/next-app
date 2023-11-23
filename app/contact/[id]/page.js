@@ -50,7 +50,7 @@ function CustomTabPanel(props) {
     };
   }
 
-export default function page() {
+export default function Page() {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {

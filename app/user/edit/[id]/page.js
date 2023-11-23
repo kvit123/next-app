@@ -3,7 +3,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-export default function page({params}) {
+export default function Page({params}) {
 
     const [ user, setUser ] = useState({
             "id": "",
