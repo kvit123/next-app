@@ -2,6 +2,7 @@
 
 import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
+import '../library/connect/connect-streams'
 
 export default function Page() {
  

@@ -1,5 +1,6 @@
 'use client'
 import * as React from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -9,6 +10,14 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/system/Stack';
 import { styled } from '@mui/system';
 import Grid from '@mui/system/Unstable_Grid';
+
+// import dynamic from 'next/dynamic';
+
+// // Dynamically import ClientSideComponent with SSR disabled
+// const ClientSideComponent = dynamic(
+//   () => import('../../component/ClientSideComponent'), // Adjust the path to your component
+//   { ssr: false }
+// );
 
 const Item = styled('div')(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#262B32' : '#fff',
@@ -53,8 +62,12 @@ function CustomTabPanel(props) {
 export default function Page() {
     const [value, setValue] = React.useState(0);
 
+    const [isCCPLoaded, setCCPLoaded] = React.useState(false);
+    
+
+
     const handleChange = (event, newValue) => {
-      setValue(newValue);
+    setValue(newValue);
     };
 
 
@@ -110,6 +123,12 @@ export default function Page() {
             </Grid>
             <Grid xs={8}>
                 <Item><h3>ผลการโทรสอบถาม</h3> </Item>
+
+                        {/* {isCCPLoaded ? 
+                            <div id="ccp-container" style={{ width: '400px', height: '800px' }}></div>
+                            : <div>Loading CCP...</div>
+                        } */}
+                        {/* <ClientSideComponent /> */}
             </Grid>
         </Grid>
 
@@ -122,4 +141,5 @@ export default function Page() {
         </CustomTabPanel>
       </Box>
     );
-  }
+}
+

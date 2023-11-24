@@ -1,9 +1,13 @@
+'use client'
+
 import React from 'react'
-import Head from 'next/head'
+import ClientSideComponent from '../component/ClientSideComponent'
 
 export default function page() {
   return (
-    <div>Customer CCP</div>
+    <div>
+      <ClientSideComponent />
+    </div>
 
   )
 }
