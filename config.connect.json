@@ -1,0 +1,12 @@
+{
+	"connectInstanceAlias": "thconnect",
+	"connectInstanceId": "1ad7df0b-4a0c-4e65-a14a-22b4fc4b55fd",
+	"connectInstanceRegion": "ap-southeast-1",
+	"contactFlowId": "b7de8f9d-6779-4b93-96b0-e6fae523a358",
+	"customerWebAppApi": "https://39aul93vw8.execute-api.ap-southeast-1.amazonaws.com",
+	"connectLoginUrl": "https://thconnect.my.connect.aws",
+	"SolutionHelperFunctionArn": "arn:aws:lambda:ap-southeast-1:915829456962:function:CustomDemo-BackendStack-SolutionHelperC369AAA8-rmKFNwlippWv",
+	"sourcePhoneNumber": "+6624304947",
+	"supportServiceAppApi": "https://cs0obzz1y4.execute-api.ap-southeast-1.amazonaws.com",
+	"UUID": "ccfc1954d4f41408becd8f3f14a850b3"
+}

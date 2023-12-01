@@ -11,13 +11,13 @@ import Stack from '@mui/system/Stack';
 import { styled } from '@mui/system';
 import Grid from '@mui/system/Unstable_Grid';
 
-// import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 
-// // Dynamically import ClientSideComponent with SSR disabled
-// const ClientSideComponent = dynamic(
-//   () => import('../../component/ClientSideComponent'), // Adjust the path to your component
-//   { ssr: false }
-// );
+// Dynamically import ClientSideComponent with SSR disabled
+const ClientSideComponent = dynamic(
+  () => import('../../component/ClientSideComponent'), // Adjust the path to your component
+  { ssr: false }
+);
 
 const Item = styled('div')(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#262B32' : '#fff',
@@ -124,11 +124,11 @@ export default function Page() {
             <Grid xs={8}>
                 <Item><h3>ผลการโทรสอบถาม</h3> </Item>
 
-                        {/* {isCCPLoaded ? 
+                        {isCCPLoaded ? 
                             <div id="ccp-container" style={{ width: '400px', height: '800px' }}></div>
                             : <div>Loading CCP...</div>
-                        } */}
-                        {/* <ClientSideComponent /> */}
+                        } 
+                        <ClientSideComponent />
             </Grid>
         </Grid>
 
