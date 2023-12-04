@@ -1,5 +1,5 @@
 import './style.css'
-import Navigation from '../ui/Navigation'
+import Navigation from '../../ui/Navigation'
 import Link from 'next/link'
 
 

@@ -1868,6 +1868,13 @@
     lodash.merge "^4.6.2"
     postcss-selector-parser "6.0.10"
 
+"@types/amazon-connect-streams@^1.4.8":
+  version "1.4.8"
+  resolved "https://registry.npmjs.org/@types/amazon-connect-streams/-/amazon-connect-streams-1.4.8.tgz"
+  integrity sha512-gjJp4gL2NqsYhUNEsGqxtwx/XZfVSmTGAMgAC+j39zxkaPxUrhqTNdpYUUdh2y1PQaWPi1fxEYYBmGpsQO+FLw==
+  dependencies:
+    amazon-connect-streams "*"
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
@@ -1979,10 +1986,10 @@ ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-amazon-connect-streams@^2.8.0:
-  version "2.8.0"
-  resolved "https://registry.npmjs.org/amazon-connect-streams/-/amazon-connect-streams-2.8.0.tgz"
-  integrity sha512-u77dQlGjH7ydjAEOlr5BTd0YOf+2kSlnDUXmHa/GQxZyb3B/mme3dcL/6Lu3E3iqngJVI7u+AltUskr2+BaWGQ==
+amazon-connect-streams@*, amazon-connect-streams@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.npmjs.org/amazon-connect-streams/-/amazon-connect-streams-2.9.0.tgz"
+  integrity sha512-b7jC0iW5iTHIEPSmUvMsCwcWdfehoUCc73JE2zQKCbGYMUZKRCn+JT3y6TskLqPcVOOayprQQp7V/UDNgFQKKQ==
 
 ansi-regex@^5.0.1:
   version "5.0.1"

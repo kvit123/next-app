@@ -7,8 +7,7 @@ const AmazonConnectCCP = ({ ccpUrl }) => {
     useEffect(() => {
         // Ensure the Amazon Connect Streams API script is loaded
         const script = document.createElement('script');
-        script.src = '';
-        // script.src = '/connectstream/connect-streams-min_2.js';
+        script.src = '/connectstream/connect-streams-min_2.js';
         script.async = true;
         script.onload = () => {
             setIsScriptLoaded(true);
