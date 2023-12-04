@@ -3,7 +3,7 @@
 import React from 'react'
 import { useState } from 'react';
 
-const page = () => {
+const Page = () => {
     const [feedback, setFeedback] = useState('');
     const [email, setEmail] = useState('');
 
@@ -73,4 +73,4 @@ const page = () => {
     );
 }
 
-export default page
+export default Page

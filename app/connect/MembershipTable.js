@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
-
+import Image from 'next/image';
 export default function MembershipTable() {
     // Dummy data set
-    const membersData = [
+    const membersData = useMemo(() => [
         // Add 15 dummy records here
         { id: 1, name: 'สมชาย เข็มกลัด', carType: 'เซดาน', branch: 'สาขา ก', lastUsedBranch: 'สาขา ข', phone: '080-123-4567', contactDate: '2023-03-01 10:30', callReason: 'สอบถาม' },
         { id: 2, name: 'วรรณา สุขใจ', carType: 'เอสยูวี', branch: 'สาขา ค', lastUsedBranch: 'สาขา ก', phone: '080-234-5678', contactDate: '2023-03-02 11:15', callReason: 'บำรุงรักษา' },
@@ -24,7 +24,7 @@ export default function MembershipTable() {
         { id: 18, name: 'Frank Miller', carType: 'Convertible', branch: 'Branch H', lastUsedBranch: 'Branch G', phone: '890-123-4567', contactDate: '2023-03-08', callReason: 'Service' },
         { id: 19, name: 'Grace Martinez', carType: 'Coupe', branch: 'Branch I', lastUsedBranch: 'Branch H', phone: '901-234-5678', contactDate: '2023-03-09', callReason: 'Complaint' },
         { id: 20, name: 'Henry Taylor', carType: 'Hatchback', branch: 'Branch J', lastUsedBranch: 'Branch I', phone: '012-345-6789', contactDate: '2023-03-10', callReason: 'Feedback' },
-    ];
+    ], [/* dependencies here */]);
 
     const [sortedField, setSortedField] = useState(null);
     const [sortDirection, setSortDirection] = useState('asc');
@@ -239,8 +239,7 @@ export default function MembershipTable() {
                         <div className="flex justify-center items-center w-full  min-h-screen bg-white px-5 py-5">
                             <div className="xl:max-w-7xl bg-white drop-shadow-xl border border-black/20 w-full rounded-md flex justify-between items-stretch px-5 xl:px-5 py-5">
                                 <div className="sm:w-[60%] lg:w-[50%] bg-cover bg-center items-center justify-center hidden md:flex ">
-                            // Add usericon image
-                                <img
+                                <Image
                                     src="usericon.png"
                                     alt="login"
                                     className="h-[500px]"

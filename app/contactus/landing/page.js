@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Script from 'next/script'
-
+import Image from 'next/image'
 const page = () => {
   return (
         <>
@@ -45,7 +45,7 @@ const page = () => {
                     <div className="flex flex-col items-center justify-between lg:flex-row py-16">
                         <div className=" relative ">
                             <div className=" absolute top-0 -left-48 z-0  opacity-50 ">
-                                <img src="https://placehold.co/200x100" className="w-36 z-0  h-full    object-fill fill-y text-y   " />
+                                <Image src="https://placehold.co/200x100" className="w-36 z-0  h-full    object-fill fill-y text-y   " alt="" />
                             </div>
                             <div className="lg:max-w-xl lg:pr-5 relative z-40">
                                 <p className="flex text-sm uppercase text-g1  ">
@@ -77,7 +77,7 @@ const page = () => {
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16 17l-4 4m0 0l-4-4m4 4V3"></path>
                             </svg>
                             <div className="abg-orange-400 mx-auto w-fit overflow-hidden rounded-[6rem] rounded-br-none rounded-tl-none">
-                                <img src="https://placehold.co/400x400" />
+                                <Image src="https://placehold.co/400x400" alt="" />
                             </div>
                         </div>
                     </div>
