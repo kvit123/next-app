@@ -175,8 +175,8 @@ export default function MembershipTable() {
                     />
                 </div>
 
-                <table className="table-sm text-sm min-w-full bg-white shadow-md rounded-xl">
-                    <thead>
+                <table className="table-auto table-sm text-sm min-w-full bg-white shadow-md rounded-xl border">
+                    <thead className='border'>
                         <tr className='bg-blue-gray-100 text-gray-700'>
                             <th className='py-3 px-4 text-left' onClick={() => requestSort('id')}>No</th>
                             <th className='py-3 px-4 text-left' onClick={() => requestSort('name')}>Customer Name</th>
@@ -240,7 +240,7 @@ export default function MembershipTable() {
                             <div className="xl:max-w-7xl bg-white drop-shadow-xl border border-black/20 w-full rounded-md flex justify-between items-stretch px-5 xl:px-5 py-5">
                                 <div className="sm:w-[60%] lg:w-[50%] bg-cover bg-center items-center justify-center hidden md:flex ">
                                 <Image
-                                    src="/usericon.png"
+                                    src=""
                                     alt="login"
                                     width={500}  // Width of the image in pixels
                                     height={500} // Height of the image in pixels

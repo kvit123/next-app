@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 
-const Page = () => {
+const ConnectCCP = () => {
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 
   useEffect(() => {
@@ -48,11 +48,11 @@ const Page = () => {
   }, [isScriptLoaded]);
 
   return (
-    <div>
-      <div id="containerDiv" className='w-80 min-w-[400px] h-[750px] min-h-[600px] border border-gray-300'></div>
+    <div className='flex'>
+      <div id="containerDiv"></div>
       {/* Other elements */}
     </div>
   );
 };
 
-export default Page;
+export default ConnectCCP;
