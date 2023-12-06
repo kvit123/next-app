@@ -1,0 +1,10 @@
+[
+  {
+    "question": "Customer received good service",
+    "responses": [7, 8, 6, 5, 9, 7, 8, 4, 3, 7 ]
+  },
+  {
+    "question": "Overall service",
+    "responses": [8, 9, 7, 8, 6, 8, 9, 5, 4, 8 ]
+  }
+]

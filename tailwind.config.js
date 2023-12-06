@@ -12,6 +12,7 @@ module.exports = {
     extend: {},
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  // plugins: [require('flowbite/plugin')],
 
   // daisyUI config (optional - here are the default values)
   daisyui: {

@@ -240,8 +240,10 @@ export default function MembershipTable() {
                             <div className="xl:max-w-7xl bg-white drop-shadow-xl border border-black/20 w-full rounded-md flex justify-between items-stretch px-5 xl:px-5 py-5">
                                 <div className="sm:w-[60%] lg:w-[50%] bg-cover bg-center items-center justify-center hidden md:flex ">
                                 <Image
-                                    src="usericon.png"
+                                    src="/usericon.png"
                                     alt="login"
+                                    width={500}  // Width of the image in pixels
+                                    height={500} // Height of the image in pixels
                                     className="h-[500px]"
                                 />
                                 </div>

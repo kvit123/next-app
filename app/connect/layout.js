@@ -1,5 +1,5 @@
 "use client"
-require('dotenv').config();
+// require('dotenv').config();
 import { Inter } from 'next/font/google';
 import "./../globals.css"
 import HeaderBar from '../component/HeaderBar';
@@ -15,12 +15,14 @@ export default function RootLayout({ children }) {
     return (   
       <html lang="en">
 
+          {/* <meta httpEquiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https://amazon-connect.github.io; connect-src 'self' https://amazon-connect.github.io;" /> */}
+            {/* Other head elements */}
         <body className={inter.className}>
             <div>
                 <HeaderBar />
 
                 <div className='flex-cols mt-4 mb-4'>{children}</div>
-                
+
                 <Footer />
             </div>
         </body>

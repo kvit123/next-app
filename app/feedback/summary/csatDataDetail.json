@@ -1,0 +1,86 @@
+[
+    {
+        "date": "2023-08-31",
+        "customerPhone": "280-145-7395",
+        "q1Score": 10,
+        "q2Score": 1,
+        "contactId": "67c28f29-e4b1-4ab2-abf5-845292bf7da1"
+    },
+    {
+        "date": "2023-06-08",
+        "customerPhone": "773-594-2635",
+        "q1Score": 10,
+        "q2Score": 7,
+        "contactId": "71f94f6e-c54a-49c1-9b16-9d0ba8c7da6f"
+    },
+    {
+        "date": "2023-12-19",
+        "customerPhone": "331-850-2825",
+        "q1Score": 5,
+        "q2Score": 10,
+        "contactId": "c8300581-cf17-4b9a-9928-b6689e822375"
+    },
+    {
+        "date": "2023-06-14",
+        "customerPhone": "994-355-3446",
+        "q1Score": 8,
+        "q2Score": 6,
+        "contactId": "f2062cfa-21ee-4fbf-a6b8-c8b795d8dcd4"
+    },
+    {
+        "date": "2023-05-13",
+        "customerPhone": "180-260-2813",
+        "q1Score": 7,
+        "q2Score": 6,
+        "contactId": "492a1d78-3b4e-45d1-a13c-d024181abe6b"
+    },
+    {
+        "date": "2023-07-18",
+        "customerPhone": "225-115-6158",
+        "q1Score": 2,
+        "q2Score": 7,
+        "contactId": "2f201d1c-5b60-4101-80f3-796e795e12eb"
+    },
+    {
+        "date": "2023-09-09",
+        "customerPhone": "898-492-2827",
+        "q1Score": 6,
+        "q2Score": 1,
+        "contactId": "6a768780-7585-4ba2-9e8e-d026fe0550ce"
+    },
+    {
+        "date": "2023-10-09",
+        "customerPhone": "968-411-9573",
+        "q1Score": 9,
+        "q2Score": 4,
+        "contactId": "01fabb65-a42e-48ef-825f-d8ca05dbf000"
+    },
+    {
+        "date": "2023-11-28",
+        "customerPhone": "188-326-8800",
+        "q1Score": 7,
+        "q2Score": 9,
+        "contactId": "0f37aa65-51f1-43cf-bb4e-45d11645c65a"
+    },
+    {
+        "date": "2023-07-19",
+        "customerPhone": "175-692-8045",
+        "q1Score": 4,
+        "q2Score": 8,
+        "contactId": "80423960-26e7-4bea-9f0b-876fc57ce354"
+    },
+    {
+        "date": "2023-07-26",
+        "customerPhone": "191-952-4445",
+        "q1Score": 6,
+        "q2Score": 8,
+        "contactId": "294fcb92-d8a7-4aa0-ab56-c03ce1e94512"
+    },
+    {
+        "date": "2023-05-21",
+        "customerPhone": "463-665-4019",
+        "q1Score": 7,
+        "q2Score": 3,
+        "contactId": "4fd9cd2f-a25d-4985-a4f0-179bbeb5c4e0"
+    }
+]
