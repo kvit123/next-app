@@ -49,7 +49,7 @@ const ConnectCCP = () => {
 
   return (
     <div className='flex'>
-      <div id="containerDiv"></div>
+      <div id="containerDiv" style={{ display: 'none' }}></div>
       {/* Other elements */}
     </div>
   );
