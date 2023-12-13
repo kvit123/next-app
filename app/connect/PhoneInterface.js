@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function PhoneInterface() {
+const PhoneInterface = ({ apiLoaded }) => {
     // const [callStatus, setCallStatus] = useState('idle'); // 'idle', 'calling', 'connected', 'on-hold'
     // const [isCallActive, setIsCallActive] = useState(false); // To track if the call is active
     // const [showKeypad, setShowKeypad] = useState(false); // To toggle keypad display
@@ -24,101 +24,69 @@ export default function PhoneInterface() {
     
 
     useEffect(() => {
-        // Check if window is defined (i.e., if in the browser/client environment)
-        if (typeof window !== 'undefined') {
-            // Get stored values from localStorage, if they exist
-            const storedCallStatus = localStorage.getItem('callStatus') || 'idle';
+
+        console.log("PhoneInterface component is rendering");
+        console.log("apiLoaded value :", apiLoaded);
+        if (apiLoaded) {
+            // Check if the Amazon Connect Streams API is loaded
+            if (typeof window.connect !== 'undefined') {
+                window.connect.agent((agent) => {
+                    // Fetch and set the agent's name
+                    const name = agent.getName();
+                    setAgentName(name);
+                    console.log("Agent Name:", name);
+
+                    // Fetch routing profile states
+                    const routingProfile = agent.getRoutingProfile();
+                    const availableStates = routingProfile.states.map(state => ({
+                        name: state.name,
+                        type: state.type
+                    }));
+                    setAgentStatusList(availableStates);
+                    console.log("Available States:", availableStates);
+
+                    // Update the status whenever there's a change
+                    // Set initial status
+                    // Set initial status
+                    const initialState = agent.getState().name;
+                    setAgentStatus(initialState);
+                    console.log("Initial Agent Status:", initialState);
+                    setLastStatusChangeTime(Date.now());
+
+                    // Listen to state changes
+                    agent.onStateChange((state) => {
+                        const newStatus = state.newState;
+                        const currentTime = Date.now();
+                        const previousStatus = agent.getState().name;
+                        const duration = currentTime - lastStatusChangeTime;
+
+                        setStatusTimes(prevStatusTimes => {
+                            const updatedStatusTimes = {
+                                ...prevStatusTimes,
+                                [previousStatus]: (prevStatusTimes[previousStatus] || 0) + duration
+                            };
+                            console.log("Updated Status Times:", updatedStatusTimes);
+                            return updatedStatusTimes;
+                        });
+
+                        setLastStatusChangeTime(currentTime);
+                        setAgentStatus(newStatus);
+                        console.log("New Agent Status:", newStatus);
+                    });
+
+                });
+            }
+
+            // Restore call status and input number from localStorage (or other source)            const storedCallStatus = localStorage.getItem('callStatus') || 'idle';
             const storedInputNumber = localStorage.getItem('inputNumber') || '';
-            
             setCallStatus(storedCallStatus);
             setInputNumber(storedInputNumber);
+
+            console.log("Stored Call Status:", storedCallStatus);
+            console.log("Stored Input Number:", storedInputNumber);
         }
     }, []);
 
-    useEffect(() => {
-        // Check if the Amazon Connect Streams API is loaded
-        if (typeof window.connect !== 'undefined') {
-            window.connect.agent((agent) => {
-                // Fetch and set the agent's name
-                setAgentName(agent.getName());
-            });
-        }
-    }, []);
-    
-    // useEffect(() => {
-    //     if (typeof window.connect !== 'undefined') {
-    //         window.connect.agent((agent) => {
-    //             const routingProfile = agent.getRoutingProfile();
-    //             const availableStates = routingProfile.states.map(state => ({
-    //                 name: state.name,
-    //                 type: state.type
-    //             }));
-    //             setAgentStatusList(availableStates);
-    //         });
-    //     }
-    // }, []);
-    
-
-
-
-    useEffect(() => {
-        if (typeof window.connect !== 'undefined') {
-            window.connect.agent((agent) => {
-                // Update the status whenever there's a change
-                agent.onStateChange((state) => {
-                    setAgentStatus(state.newState);
-                });
-    
-                // Set the initial status
-                setAgentStatus(agent.getState().name);
-            });
-        }
-    }, []);
-
-    // const setAgentAvailable = () => {
-    //     const routingProfile = new window.connect.RoutingProfile();
-    //     const queueARNs = []; // Replace with your queue ARNs
-    //     const initialState = window.connect.AgentStateType.ROUTABLE;
-    
-    //     window.connect.agent((agent) => {
-    //         agent.setState(initialState, {
-    //             success: () => {
-    //                 console.log("Agent set to available");
-    //             },
-    //             failure: () => {
-    //                 console.error("Failed to set agent to available");
-    //             }
-    //         });
-    //     });
-    // };
-
-
-    // Agent Time status
-    // useEffect(() => {
-    //     if (typeof window.connect !== 'undefined') {
-    //         window.connect.agent((agent) => {
-    //             agent.onStateChange((state) => {
-    //                 const newStatus = state.newState;
-    //                 const currentTime = Date.now();
-    //                 const previousStatus = agent.getState().name;
-    //                 const duration = currentTime - lastStatusChangeTime;
-    
-    //                 setStatusTimes(prevStatusTimes => ({
-    //                     ...prevStatusTimes,
-    //                     [previousStatus]: (prevStatusTimes[previousStatus] || 0) + duration
-    //                 }));
-    
-    //                 setLastStatusChangeTime(currentTime);
-    //                 setAgentStatus(newStatus);
-    //             });
-    
-    //             // Set the initial status and time
-    //             setAgentStatus(agent.getState().name);
-    //             setLastStatusChangeTime(Date.now());
-    //         });
-    //     }
-    // }, []);
-    
 
     useEffect(() => {
         // Again, check if window is defined
@@ -161,25 +129,6 @@ export default function PhoneInterface() {
         }
     };
 
-    // const handleHangup = () => {
-    //     // Implement hangup functionality
-    //     // End the call using Amazon Connect Streams API
-    //     window.connect.contact((contact) => {
-    //         if (contact) {
-    //             contact.getAgentConnection().destroy({
-    //                 success: () => {
-    //                     console.log("Call ended successfully");
-    //                     setCallStatus('idle');
-    //                     setIsCallActive(false); // Set the call as inactive
-    //                     setInputNumber(''); // Reset the input number
-    //                 },
-    //                 failure: () => {
-    //                     console.error("Failed to end the call");
-    //                 }
-    //             });
-    //         }
-    //     });
-    // };
 
     const handleHangup = () => {
         console.log("Attempting to hang up the call...");
@@ -301,35 +250,69 @@ export default function PhoneInterface() {
         setInputNumber(inputNumber.slice(0, -1));
     };
 
-    // const handleStatusChange = (event) => {
-    //     const selectedStatusType = event.target.value;
-    //     window.connect.agent((agent) => {
-    //         const newState = agent.getAgentStates().find(state => state.type === selectedStatusType);
-    //         if (newState) {
-    //             agent.setState(newState, {
-    //                 success: () => {
-    //                     console.log(`Agent status changed to ${newState.name}`);
-    //                 },
-    //                 failure: () => {
-    //                     console.error("Failed to change agent status");
-    //                 }
-    //             });
-    //         }
-    //     });
-    // };
+    const setAgentAvailable = () => {
+        // Ensure the Streams API is loaded
+        if (typeof window.connect !== 'undefined') {
+            // Get the current agent
+            window.connect.agent((agent) => {
+                // Make sure the agent object is valid
+                if (agent) {
+                    // Get the agent's routing profile
+                    const routingProfile = agent.getRoutingProfile();
+                    const queueARNs = routingProfile.queues.map(queue => queue.queueARN);
+    
+                    // Use queueARNs as needed
+                    console.log("Queue ARNs:", queueARNs);
+    
+                    // Set the agent's state
+                    const initialState = window.connect.AgentStateType.ROUTABLE;
+                    agent.setState(initialState, {
+                        success: () => {
+                            console.log("Agent set to available");
+                        },
+                        failure: () => {
+                            console.error("Failed to set agent to available");
+                        }
+                    });
+                } else {
+                    console.error("Agent object not available");
+                }
+            });
+        } else {
+            console.error("Amazon Connect Streams API not loaded");
+        }
+    };
+    
+
+    const handleStatusChange = (event) => {
+        const selectedStatusType = event.target.value;
+        window.connect.agent((agent) => {
+            const newState = agent.getAgentStates().find(state => state.type === selectedStatusType);
+            if (newState) {
+                agent.setState(newState, {
+                    success: () => {
+                        console.log(`Agent status changed to ${newState.name}`);
+                    },
+                    failure: () => {
+                        console.error("Failed to change agent status");
+                    }
+                });
+            }
+        });
+    };
 
     //Display time status
-    // const formatDuration = (milliseconds) => {
-    //     const seconds = Math.floor(milliseconds / 1000);
-    //     const minutes = Math.floor(seconds / 60);
-    //     const hours = Math.floor(minutes / 60);
+    const formatDuration = (milliseconds) => {
+        const seconds = Math.floor(milliseconds / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
     
-    //     const hoursPart = hours > 0 ? `${hours}h ` : '';
-    //     const minutesPart = minutes > 0 ? `${minutes % 60}m ` : '';
-    //     const secondsPart = `${seconds % 60}s`;
+        const hoursPart = hours > 0 ? `${hours}h ` : '';
+        const minutesPart = minutes > 0 ? `${minutes % 60}m ` : '';
+        const secondsPart = `${seconds % 60}s`;
     
-    //     return `${hoursPart}${minutesPart}${secondsPart}`;
-    // };
+        return `${hoursPart}${minutesPart}${secondsPart}`;
+    };
 
     return (
         <div className="relative min-w-[25%] bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
@@ -356,18 +339,18 @@ export default function PhoneInterface() {
             </div>
 
             {/* Display Agent's Time Status */}
-            <div>
+            {/* <div>
                 <h3>Status Durations</h3>
                 {Object.keys(statusTimes).map((status) => (
                     <p key={status}>{status}: {formatDuration(statusTimes[status])}</p>
                 ))}
-            </div>
-            {/* Button to Set Agent to Available
+            </div> */}
+            {/* Button to Set Agent to Available */}
             <button onClick={setAgentAvailable} className="btn p-4 rounded shadow">
                 Set to Available
-            </button> */}
+            </button>
 
-            {/* <div>
+            <div>
                 <select onChange={handleStatusChange} value={agentStatus}>
                     {agentStatusList.map((status, index) => (
                         <option key={index} value={status.type}>
@@ -375,7 +358,7 @@ export default function PhoneInterface() {
                         </option>
                     ))}
                 </select>
-            </div> */}
+            </div>
 
             {/* Text input for number */}
             <input
@@ -443,3 +426,5 @@ export default function PhoneInterface() {
         </div>
     );
 }
+
+export default PhoneInterface;
