@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+  <head>
+    <script type="text/javascript" src="connect-streams-min.js"></script>
+  </head>
+  <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
+  <body onload="init()">
+    <main style="display: flex;">
+      <div id="ccp-container"></div>
+      <div id="customerprofiles-container"></div>
+      <div id="wisdom-container"></div>
+      <div id="cases-container"></div>
+      <div id="customviews-container"></div>
+    </main>
+    <script type="text/javascript">
+      function init() {
+        const connectUrl = "https://thconnect.awsapps.com/connect";
+        connect.agentApp.initApp(
+            "ccp", 
+            "ccp-container", 
+            connectUrl + "/ccp-v2/",
+            { style: "width:400px; height:600px;" }
+        );
+        connect.agentApp.initApp(
+            "customerprofiles", 
+            "customerprofiles-container", 
+            connectUrl + "/customerprofiles-v2/",
+            { style: "width:400px; height:600px;" }
+        );
+        //used to initialize Amazon Q Connect
+        connect.agentApp.initApp(
+            "wisdom", 
+            "wisdom-container", 
+            connectUrl + "/wisdom-v2/",
+            { style: "width:400px; height:600px;" }
+        );
+        connect.agentApp.initApp(
+  		      "cases", 
+  		      "cases-container", 
+  		      connectUrl + "/cases/agent-app/",
+  		      { style: "width:400px; height:600px;" }
+  		  );
+        connect.agentApp.initApp(
+            "customviews", 
+            "customviews-container", 
+            connectUrl + "/stargate/app",
+            { style: "width:400px; height:600px;" }
+        );
+        /**
+         * 
+        * CustomViews will not load any view without a contact flow Id. 
+        * You can get the contact flow ID from the contact attribute, DefaultFlowForAgentUI (see [here](https://docs.aws.amazon.com/connect/latest/adminguide/how-to-invoke-a-flow-sg.html) for more details on this particular attribute).
+        * If you want to use information on the current connected contact (voice, chat, or task) to provide context to the step-by-step guide flow, you should add the parameter, currentContactId, at the url.  
+        * For more information, visit the AWS website: https://aws.amazon.com/connect/agent-workspace/
+        *
+        **/
+        connect.contact((contact)=>{
+            contact.onConnected((contact)=>{
+                const currentContactId = contact.contactId;
+                const contactAttributes = contact.getAttributes();
+                if(contactAttributes["DefaultFlowForAgentUI"]) {
+                    const contactflowId = contactAttributes["DefaultFlowForAgentUI"].value;
+                    const customViewsIframe = document.querySelector('#customviews-container > iframe');
+                    
+                    customViewsIframe.setAttribute('src', `${connectUrl}/stargate/app?contactFlowId=${contactflowId}&currentContactId=${currentContactId}`);
+                }
+            });
+        })
+      }
+    </script>
+  </body>
+</html>
