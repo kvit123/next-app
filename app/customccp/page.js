@@ -72,20 +72,31 @@ const Page = () => {
           loginPopupAutoClose: true,		// optional, defaults to `false`
           loginOptions: {                 // optional, if provided opens login in new window
               autoClose: true,              // optional, defaults to `false`
-              height: 600,                  // optional, defaults to 578
-              width: 400,                   // optional, defaults to 433
+              height: 578,                  // optional, defaults to 578
+              width: 433,                   // optional, defaults to 433
               top: 0,                       // optional, defaults to 0
               left: 0                       // optional, defaults to 0
           },
           softphone: {                    // optional, defaults below apply if not provided
-              allowFramedSoftphone: true,   // optional, defaults to false
-              disableRingtone: false,       // optional, defaults to false
-              ringtoneUrl: "./ringtone.mp3" // optional, defaults to CCP’s default ringtone if a falsy value is set
+              // optional, defaults below apply if not provided
+              allowFramedSoftphone: true, // optional, defaults to false
+              disableRingtone: false, // optional, defaults to false
+              ringtoneUrl: './ringtone.mp3', // optional, defaults to CCP’s default ringtone if a falsy value is set
+              disableEchoCancellation: false, // optional, defaults to false
+              allowFramedVideoCall: true, // optional, default to false
+              allowEarlyGum: true //optional, default to true
           },
+          // storageAccess: {
+          //   canRequest: true, // By default this is set to true. You can set it to false to opt out from checking storage access.  
+          //   mode: "custom", // To use the default banner, set this to "default"
+          //   /** More customization options can be found here: https://docs.aws.amazon.com/connect/latest/adminguide/admin-3pcookies.html#config-grant-access */
+          // },
           pageOptions: {                  // optional
-              enableAudioDeviceSettings: true, // optional, defaults to 'false'
-              enablePhoneTypeSettings: true // optional, defaults to 'true'
+            enableAudioDeviceSettings: false, //optional, defaults to 'false'
+            enableVideoDeviceSettings: false, //optional, defaults to 'false'
+            enablePhoneTypeSettings: true //optional, defaults to 'true' 
           },
+          shouldAddNamespaceToLogs: false, //optional, defaults to 'false'
           ccpAckTimeout: 5000, //optional, defaults to 3000 (ms)
           ccpSynTimeout: 3000, //optional, defaults to 1000 (ms)
           ccpLoadTimeout: 10000 //optional, defaults to 5000 (ms)
