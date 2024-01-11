@@ -4,7 +4,7 @@ import React from 'react'
 import Script from 'next/script';
 import { useState } from 'react';
 
-export default function page() {
+export default function Page() {
 
     const [feedback, setFeedback] = useState('');
     const [email, setEmail] = useState('');
