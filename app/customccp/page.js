@@ -9,6 +9,7 @@ const Page = () => {
   const handleTab2Click = () => setActiveTab('tab2');
   const handleTab3Click = () => setActiveTab('tab3');
 
+
   const [sampleLink, setSampleLink] = useState('');
 
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
@@ -173,6 +174,7 @@ const Page = () => {
     console.warn = function(...messages) {
       displayMessage(messages.join(' '), 'Warn');
       originalConsoleWarn.apply(console, messages);
+      
     };
   
     // ... your other useEffect code ...

@@ -2,9 +2,17 @@
 
 import React from 'react'
 import Script from 'next/script';
-
+import { useState } from 'react';
 
 export default function page() {
+
+    const [feedback, setFeedback] = useState('');
+    const [email, setEmail] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // Perform any API calls or validation here
+    };
 
   return (
         <>
@@ -120,7 +128,7 @@ export default function page() {
                         </span>
                         <p className="text-2xl font-extrabold text-dark-grey-900">Email</p>
                         <p className="text-base leading-7 text-dark-grey-600">Contact us at</p>
-                        <a className="text-lg font-bold text-purple-blue-500" href = "mailto: hello@loopple.com">hello@loopple.com</a>
+                        <a className="text-lg font-bold text-purple-blue-500" href = "mailto: contact@thconnect.co">contact@thconnect.co</a>
                         </div>
                         <div className="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main">
                         <span>
@@ -130,7 +138,7 @@ export default function page() {
                         </span>
                         <p className="text-2xl font-extrabold text-dark-grey-900">Phone</p>
                         <p className="text-base leading-7 text-dark-grey-600">Reach out to us by phone</p>
-                        <a className="text-lg font-bold text-purple-blue-500" href="tel:+516-486-5135">+516-486-5135</a>
+                        <a className="text-lg font-bold text-purple-blue-500" href="tel:+6620806071">+662-080-6071</a>
                         </div>
                         <div className="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main">
                         <span>
@@ -140,7 +148,76 @@ export default function page() {
                         </span>
                         <p className="text-2xl font-extrabold text-dark-grey-900">Location</p>
                         <p className="text-base leading-7 text-dark-grey-600">Find us at our office</p>
-                        <a className="text-lg font-bold text-purple-blue-500" target="_blank" href="https://goo.gl/maps/QcWzYETAh4FS3KTD7">10924 Urna Convallis</a>
+                        <a className="text-lg font-bold text-purple-blue-500" target="_blank" href="https://goo.gl/maps/QcWzYETAh4FS3KTD7">10300 BKK Thailand</a>
+                        </div>
+                    </div>
+                    <div className="container flex flex-col items-center">
+                        <div className="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main">
+                            <div className="flex flex-wrap justify-center">
+                                <div className="w-full lg:w-6/12 px-4">
+                                    <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-white">
+                                        <div className="flex-auto p-5 lg:p-10">
+                                            <h4 className="text-2xl mb-4 text-black font-semibold">Have a suggestion?</h4>
+                                            <form id="feedbackForm" onSubmit={handleSubmit}>
+                                                <div className="relative w-full mb-3">
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="email">Customer Name</label>
+                                                    <input
+                                                        type="email"
+                                                        name="email"
+                                                        id="email"
+                                                        className="border-0 px-3 py-3 rounded text-sm shadow w-full bg-gray-300 placeholder-black text-gray-800 outline-none focus:bg-gray-400"
+                                                        placeholder=" "
+                                                        style={{ transition: 'all 0.15s ease 0s' }}
+                                                        value={email}
+                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        required
+                                                    />
+                                                </div>
+                                                <div className="relative w-full mb-3">
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="email">Phone Number</label>
+                                                    <input
+                                                        type="email"
+                                                        name="email"
+                                                        id="email"
+                                                        className="border-0 px-3 py-3 rounded text-sm shadow w-full bg-gray-300 placeholder-black text-gray-800 outline-none focus:bg-gray-400"
+                                                        placeholder=" "
+                                                        style={{ transition: 'all 0.15s ease 0s' }}
+                                                        value={email}
+                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        required
+                                                    />
+                                                </div>
+                                                <div className="relative w-full mb-3">
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="email">Email</label>
+                                                    <input
+                                                        type="email"
+                                                        name="email"
+                                                        id="email"
+                                                        className="border-0 px-3 py-3 rounded text-sm shadow w-full bg-gray-300 placeholder-black text-gray-800 outline-none focus:bg-gray-400"
+                                                        placeholder=" "
+                                                        style={{ transition: 'all 0.15s ease 0s' }}
+                                                        value={email}
+                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        required
+                                                    />
+                                                </div>
+                                                <div className="relative w-full mb-3">
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="message">Message</label>
+                                                    <textarea maxLength="300" name="feedback" id="feedback" rows="4" cols="80"
+                                                        className="border-0 px-3 py-3 bg-gray-300 placeholder-black text-gray-800 rounded text-sm shadow focus:outline-none w-full"
+                                                        placeholder="" value={feedback} onChange={(e) => setFeedback(e.target.value)} required></textarea>
+                                                </div>
+                                                <div className="text-center mt-6">
+                                                    <button id="feedbackBtn"
+                                                        className="bg-yellow-300 text-black text-center mx-auto active:bg-yellow-400 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+                                                        type="submit">Submit
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -149,7 +226,7 @@ export default function page() {
         <div className="flex flex-wrap -mx-3 my-5">
             <div className="w-full max-w-full sm:w-3/4 mx-auto text-center">
                 <p className="text-sm text-slate-500 py-1">
-                    Tailwind CSS Component from <a href="https://www.loopple.com/theme/motion-landing-library?ref=tailwindcomponents" className="text-slate-700 hover:text-slate-900" target="_blank">Motion Landing Library</a> by <a href="https://www.loopple.com" className="text-slate-700 hover:text-slate-900" target="_blank">Loopple Builder</a>.
+                    THCONNECT Customer Service from <a href="https://www.loopple.com/theme/motion-landing-library?ref=tailwindcomponents" className="text-slate-700 hover:text-slate-900" target="_blank">Motion Landing Library</a> by <a href="https://www.loopple.com" className="text-slate-700 hover:text-slate-900" target="_blank">Connect Builder</a>.
                 </p>
             </div>
         </div>
