@@ -6,18 +6,74 @@ import { useState } from 'react';
 
 export default function Page() {
 
-    const [feedback, setFeedback] = useState('');
+    const [customerName, setCustomerName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
+    const [feedback, setFeedback] = useState('');
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Perform any API calls or validation here
+        loadAmazonConnectScript(customerName, phoneNumber);
     };
+
+    // Function to dynamically update the Amazon Connect script
+    const loadAmazonConnectScript = (name, phone) => {
+        // Remove existing script if it exists
+        const existingScript = document.getElementById("amazon-connect-script");
+        if (existingScript) {
+            existingScript.remove();
+        }
+
+        // Create a new script element
+        const script = document.createElement("script");
+        script.id = "amazon-connect-script";
+        script.type = "text/javascript";
+        script.async = true;
+        script.innerHTML = `
+            (function(w, d, x, id){
+                var s=d.createElement('script');
+                s.src='https://d3pdo5aouiodr4.cloudfront.net/amazon-connect-chat-interface-client.js';
+                s.async=1;
+                s.id=id;
+                d.getElementsByTagName('head')[0].appendChild(s);
+                w[x] = w[x] || function() { (w[x].ac = w[x].ac || []).push(arguments) };
+            })(window, document, 'amazon_connect', '88709218-998f-4d7d-b7ff-20a794de3ec0');
+
+            amazon_connect('styles', { 
+                iconType: 'CHAT_VOICE', 
+                openChat: { color: '#ffffff', backgroundColor: '#d4563a' }, 
+                closeChat: { color: '#ffffff', backgroundColor: '#eb5e0b'} 
+            });
+
+            amazon_connect('snippetId', 'QVFJREFIZ3piM1lKbU1ObnJsR2doajhNZWNuZzlOV1Q3N3JBQTBqVEcwRnJ1bXArUHdHTndPMjM0ZUZaejJhUWlYMVJ2eTFWQUFBQWJqQnNCZ2txaGtpRzl3MEJCd2FnWHpCZEFnRUFNRmdHQ1NxR1NJYjNEUUVIQVRBZUJnbGdoa2dCWlFNRUFTNHdFUVFNMmcxRUJjSCt3WU1vaGZIZUFnRVFnQ3RBcUZyRjR0T0RSRFd6cDIwS3VPdEgrRnFKaU5qVDYyM1plakFiR011UDRqRVdwdmlyNjQ5dStzWlY6OitDZE14Q0dnMHEwdFNpbTNMNXdpU01OVS9HQXRqZzJNb1ZFN2tDeW5xZHJqR2VqL3VhbFNmeitucSt4Y0ZUUENEZzFTcE5ZY2VZMDhVRWlCamMzNEYrQzN0WUp6aGtTUkV5S0V3S2E1L1ZRS0d3MTdmNjVZRVFWYzVvSFY4TTJrSVQ1bE5TMjlrKzB4VzlkWUtueSsyTHY2Tk5ZR3VvYz0=');
+            amazon_connect('supportedMessagingContentTypes', [ 'text/plain', 'text/markdown' ]);
+
+            amazon_connect('customizationObject', {
+                transcript: {
+                    hideDisplayNames: true,
+                    eventNames: {
+                        customer: '${name}', // Using the customer name from the form
+                        agent: 'Amazon Employee'
+                    }
+                }
+            });
+
+        `;
+
+        // Append the new script to the document
+        document.head.appendChild(script);
+    };
+
+    useEffect(() => {
+        // You can also load the initial Amazon Connect script here
+    }, []);
 
   return (
         <>
 
-        <Script id="amazon-connect-script" strategy="afterInteractive">
+        {/* <Script id="amazon-connect-script" strategy="afterInteractive">
             {`
             (function(w, d, x, id){
                 var s=d.createElement('script');
@@ -47,7 +103,7 @@ export default function Page() {
               });
 
             `}
-        </Script>
+        </Script> */}
 
         {/* <div className="relative flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
             <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
@@ -160,30 +216,28 @@ export default function Page() {
                                             <h4 className="text-2xl mb-4 text-black font-semibold">Have a suggestion?</h4>
                                             <form id="feedbackForm" onSubmit={handleSubmit}>
                                                 <div className="relative w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="email">Customer Name</label>
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="customerName">Customer Name</label>
                                                     <input
-                                                        type="email"
-                                                        name="email"
-                                                        id="email"
+                                                        type="text"
+                                                        name="customerName"
+                                                        id="customerName"
                                                         className="border-0 px-3 py-3 rounded text-sm shadow w-full bg-gray-300 placeholder-black text-gray-800 outline-none focus:bg-gray-400"
-                                                        placeholder=" "
-                                                        style={{ transition: 'all 0.15s ease 0s' }}
-                                                        value={email}
-                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        placeholder="Enter your name"
+                                                        value={customerName}
+                                                        onChange={(e) => setCustomerName(e.target.value)}
                                                         required
                                                     />
                                                 </div>
                                                 <div className="relative w-full mb-3">
-                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="email">Phone Number</label>
+                                                    <label className="block uppercase text-gray-700 text-xs font-bold mb-2" htmlFor="phoneNumber">Phone Number</label>
                                                     <input
-                                                        type="email"
-                                                        name="email"
-                                                        id="email"
+                                                        type="tel" // Use 'tel' type for phone numbers
+                                                        name="phoneNumber"
+                                                        id="phoneNumber"
                                                         className="border-0 px-3 py-3 rounded text-sm shadow w-full bg-gray-300 placeholder-black text-gray-800 outline-none focus:bg-gray-400"
-                                                        placeholder=" "
-                                                        style={{ transition: 'all 0.15s ease 0s' }}
-                                                        value={email}
-                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        placeholder="Enter your phone number"
+                                                        value={phoneNumber}
+                                                        onChange={(e) => setPhoneNumber(e.target.value)}
                                                         required
                                                     />
                                                 </div>
