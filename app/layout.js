@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
             <div>
                 <HeaderBar />
 
-                <div className='flex-cols mt-4 mb-4'>{children}</div>
+                <div className='flex-cols w-100% justify-center mt-4 mb-4'>{children}</div>
 
                 <Footer />
             </div>

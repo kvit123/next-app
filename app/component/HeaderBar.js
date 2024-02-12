@@ -12,14 +12,14 @@ const HeaderBar = () => {
                 </div>
                 <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                     <li><Link href={'/'}>Home</Link></li>
-                    <li><Link href={'/connect'}>Connect</Link></li>
+                    <li><Link href={'/connect'}>Campaign with CustomCCP</Link></li>
+                    <li><Link href={'/contact'}>Campaign with CCP</Link></li>
                     <li><Link href={'/contactus'}>ContactUs</Link></li>
-                    <li><Link href={'/contact'}>Contact</Link></li>
+                    <li><Link href={'/inquiry'}>Inquiry</Link></li>
+                    <li><Link href={'/customccp'}>CustomCCP</Link></li>
                     <li><Link href={'/feedback'}>Feedback</Link></li>
                     <li><Link href={'/feedback/summary'}>Feedback Dashboard</Link></li>
-                    <li><Link href={'/customccp'}>CustomCCP</Link></li>
-                    <li><Link href={'/sample/agent'}>Sample</Link></li>
-                    <li><Link href={'/user'}>Sample CRUD</Link></li>
+                    <li><Link href={'/setting'}>Setting</Link></li>
                 </ul>
                 </div>
             </div>

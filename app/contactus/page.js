@@ -66,14 +66,14 @@ export default function Page() {
         document.head.appendChild(script);
     };
 
-    useEffect(() => {
-        // You can also load the initial Amazon Connect script here
-    }, []);
+    // useEffect(() => {
+    //     // You can also load the initial Amazon Connect script here
+    // }, []);
 
   return (
         <>
 
-        {/* <Script id="amazon-connect-script" strategy="afterInteractive">
+        <Script id="amazon-connect-script" strategy="afterInteractive">
             {`
             (function(w, d, x, id){
                 var s=d.createElement('script');
@@ -103,7 +103,7 @@ export default function Page() {
               });
 
             `}
-        </Script> */}
+        </Script>
 
         {/* <div className="relative flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
             <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
@@ -207,7 +207,7 @@ export default function Page() {
                         <a className="text-lg font-bold text-purple-blue-500" target="_blank" href="https://goo.gl/maps/QcWzYETAh4FS3KTD7">10300 BKK Thailand</a>
                         </div>
                     </div>
-                    <div className="container flex flex-col items-center">
+                    {/* <div className="container flex flex-col items-center">
                         <div className="flex flex-col items-center gap-3 px-8 py-10 bg-white rounded-3xl shadow-main">
                             <div className="flex flex-wrap justify-center">
                                 <div className="w-full lg:w-6/12 px-4">
@@ -273,14 +273,14 @@ export default function Page() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
         <div className="flex flex-wrap -mx-3 my-5">
             <div className="w-full max-w-full sm:w-3/4 mx-auto text-center">
                 <p className="text-sm text-slate-500 py-1">
-                    THCONNECT Customer Service from <a href="https://www.loopple.com/theme/motion-landing-library?ref=tailwindcomponents" className="text-slate-700 hover:text-slate-900" target="_blank">Motion Landing Library</a> by <a href="https://www.loopple.com" className="text-slate-700 hover:text-slate-900" target="_blank">Connect Builder</a>.
+                    THCONNECT Customer Service by <a href="https://www.loopple.com" className="text-slate-700 hover:text-slate-900" target="_blank">Connect Builder</a>.
                 </p>
             </div>
         </div>

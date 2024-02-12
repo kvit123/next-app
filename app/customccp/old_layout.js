@@ -1,8 +1,9 @@
+'use client'
 
 require('dotenv').config();
 import "./../../app/globals.css"
 import { Inter } from 'next/font/google';
-import HeaderBar from './../component/HeaderBar';
+import HeaderBar from '../component/HeaderBar';
 
 
 

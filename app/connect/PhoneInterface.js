@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react';
 
 const PhoneInterface = ({ apiLoaded }) => {
@@ -27,9 +28,10 @@ const PhoneInterface = ({ apiLoaded }) => {
 
         console.log("PhoneInterface component is rendering");
         console.log("apiLoaded value :", apiLoaded);
-        if (apiLoaded) {
+        //if (apiLoaded) {
             // Check if the Amazon Connect Streams API is loaded
-            if (typeof window.connect !== 'undefined') {
+        const checkAPI = () => {
+            if (apiLoaded && window.connect && typeof window.connect.agent === 'function') {
                 window.connect.agent((agent) => {
                     // Fetch and set the agent's name
                     const name = agent.getName();
@@ -75,17 +77,22 @@ const PhoneInterface = ({ apiLoaded }) => {
                     });
 
                 });
+                
+            } else {
+                console.log('Waiting for Amazon Connect Streams API to load...');
+                setTimeout(checkAPI, 1000); // Check again after a delay
             }
-
-            // Restore call status and input number from localStorage (or other source)            const storedCallStatus = localStorage.getItem('callStatus') || 'idle';
-            const storedInputNumber = localStorage.getItem('inputNumber') || '';
-            setCallStatus(storedCallStatus);
-            setInputNumber(storedInputNumber);
-
-            console.log("Stored Call Status:", storedCallStatus);
-            console.log("Stored Input Number:", storedInputNumber);
         }
-    }, []);
+        // Restore call status and input number from localStorage (or other source)            const storedCallStatus = localStorage.getItem('callStatus') || 'idle';
+        const storedInputNumber = localStorage.getItem('inputNumber') || '';
+        const storedCallStatus = localStorage.getItem('callStatus') || 'idle';
+        setCallStatus(storedCallStatus);
+        setInputNumber(storedInputNumber);
+
+        console.log("Stored Call Status:", storedCallStatus);
+        console.log("Stored Input Number:", storedInputNumber);
+        
+    }, [apiLoaded]); 
 
 
     useEffect(() => {
