@@ -14,7 +14,6 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className={inter.className}>
             <div>
-                <HeaderBar />
 
                 <div className='flex-cols mt-4 mb-4'>{children}</div>
 
