@@ -10,7 +10,7 @@ const Page = () => {
   const [customerPhoneNumber, setCustomerPhoneNumber] = useState('');
   const [contactAttributes, setContactAttributes] = useState({});
 
-  const connectUrl = "https://test-gps.my.connect.aws/connect";
+  const connectUrl = "https://thconnect.my.connect.aws/connect";
 
   // Function to initialize the app
   const init = () => {

@@ -324,48 +324,7 @@ const Page = () => {
                             </div>
                             
                     </div>
-
-                    <input
-                        type="radio"
-                        name="my_tabs_2"
-                        role="tab"
-                        className="tab"
-                        aria-label="Customer Profile"
-                        checked={selectedTab === "tab2"}
-                        onChange={() => setSelectedTab("tab2")}
-                    />
-                    <div
-                        role="tabpanel"
-                        className="tab-content bg-base-100 border-base-300 rounded-box p-6 self-start"
-                        style={{ display: selectedTab === "tab2" ? "block" : "none" }}
-                    >
-                        <div id="customerprofiles-container"></div>
-                    </div>
-
-                    <input
-                        type="radio"
-                        name="my_tabs_2"
-                        role="tab"
-                        className="tab"
-                        aria-label="Agent Step"
-                        checked={selectedTab === "tab3"}
-                        onChange={() => setSelectedTab("tab3")}
-                    />
-                    <div
-                        role="tabpanel"
-                        className="tab-content bg-base-100 border-base-300 rounded-box p-6 self-start"
-                        style={{ display: selectedTab === "tab3" ? "block" : "none" }}
-                    >
-                        step
-                    </div>
-
                 </div> 
-            </div>
-
-            <div className="flex flex-auto ml-9 my-5 w-full border border-sky-500 self-start">
-                <div className="flex-auto ml-9 my-5"> 
-                    <div id="customviews-container"></div>
-                </div>
             </div>
 
         </div>
