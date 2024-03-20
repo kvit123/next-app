@@ -96,8 +96,8 @@ export default function Page() {
                 transcript: {
                   hideDisplayNames: true,
                   eventNames: {
-                    customer: 'ASDF',
-                    agent: 'Amazon Employee'
+                    customer: 'โจศักดิ์ ชาญนารี',
+                    agent: 'Virtual Assistant'
                   }
                 }
               });
