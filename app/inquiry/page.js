@@ -40,22 +40,19 @@ export default function Page() {
         script.async = true;
         script.innerHTML = `
             (function(w, d, x, id){
-                var s=d.createElement('script');
+                s=d.createElement('script');
                 s.src='https://d3pdo5aouiodr4.cloudfront.net/amazon-connect-chat-interface-client.js';
                 s.async=1;
                 s.id=id;
                 d.getElementsByTagName('head')[0].appendChild(s);
-                w[x] = w[x] || function() { (w[x].ac = w[x].ac || []).push(arguments) };
-            })(window, document, 'amazon_connect', '88709218-998f-4d7d-b7ff-20a794de3ec0');
+                w[x] =  w[x] || function() { (w[x].ac = w[x].ac || []).push(arguments) };
+            })(window, document, 'amazon_connect', 'cba4ee41-aa89-4aed-ad23-ed24bfbe71d9');
 
-            amazon_connect('styles', { 
-                iconType: 'CHAT_VOICE', 
-                openChat: { color: '#ffffff', backgroundColor: '#d4563a' }, 
-                closeChat: { color: '#ffffff', backgroundColor: '#eb5e0b'} 
-            });
-
-            amazon_connect('snippetId', 'QVFJREFIZ3piM1lKbU1ObnJsR2doajhNZWNuZzlOV1Q3N3JBQTBqVEcwRnJ1bXArUHdHTndPMjM0ZUZaejJhUWlYMVJ2eTFWQUFBQWJqQnNCZ2txaGtpRzl3MEJCd2FnWHpCZEFnRUFNRmdHQ1NxR1NJYjNEUUVIQVRBZUJnbGdoa2dCWlFNRUFTNHdFUVFNMmcxRUJjSCt3WU1vaGZIZUFnRVFnQ3RBcUZyRjR0T0RSRFd6cDIwS3VPdEgrRnFKaU5qVDYyM1plakFiR011UDRqRVdwdmlyNjQ5dStzWlY6OitDZE14Q0dnMHEwdFNpbTNMNXdpU01OVS9HQXRqZzJNb1ZFN2tDeW5xZHJqR2VqL3VhbFNmeitucSt4Y0ZUUENEZzFTcE5ZY2VZMDhVRWlCamMzNEYrQzN0WUp6aGtTUkV5S0V3S2E1L1ZRS0d3MTdmNjVZRVFWYzVvSFY4TTJrSVQ1bE5TMjlrKzB4VzlkWUtueSsyTHY2Tk5ZR3VvYz0=');
+            amazon_connect('styles', { iconType: 'VOICE', openChat: { color: '#ffffff', backgroundColor: '#0096ff' }, closeChat: { color: '#ffffff', backgroundColor: '#0096ff'} });
+            amazon_connect('snippetId', 'QVFJREFIaG1iZFU1YnJCMEFuWjNYenp0SGlsZXZkWEc0UkF0S2loa2JaK25GUVYramdHTDJZNXhjNDRJQXBQSDZCSll5WGVCQUFBQWJqQnNCZ2txaGtpRzl3MEJCd2FnWHpCZEFnRUFNRmdHQ1NxR1NJYjNEUUVIQVRBZUJnbGdoa2dCWlFNRUFTNHdFUVFNSkVDOE1jemtYVzdqQVdZaUFnRVFnQ3RSYUF6L1VzRU1TYTNsakF0OUhNR1I3WVBGQ1RSbmRzcGEvY2xrNStFa3BzQ1R0bm10QUprajBpWkk6OmRpTE1pYy9CMFo2N0VCUUFzc2h1ZmZxeC9XRDRtMnpOWUFYUWw3eW41TWtsQlVRK3c3VHBTSWUvYzcyR1dIU3NaaW42UlJ0Rnd1d0ZKcXM4SnRjNEtxZlBRaFpkWVFlbGZnYlh0VWoxTW8ySVVNdjVvQmFPWUN0OWxOMUxjUkRWalZrdzFkY2VhRlVhcHpGYW91K1dmU0ZFQi9FUWlIOD0=');
             amazon_connect('supportedMessagingContentTypes', [ 'text/plain', 'text/markdown' ]);
+
+
 
             amazon_connect('customizationObject', {
                 transcript: {
